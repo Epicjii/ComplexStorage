@@ -1,0 +1,4 @@
+name: ComplexStorage
+version: '${version}'
+main: plugin.complexstorage.ComplexStorage
+api-version: 1.18
