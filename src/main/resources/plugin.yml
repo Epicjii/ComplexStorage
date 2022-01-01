@@ -2,3 +2,7 @@ name: ComplexStorage
 version: '${version}'
 main: plugin.complexstorage.ComplexStorage
 api-version: 1.18
+commands:
+  storage:
+    description: summons the storage stick
+    usage: /storage

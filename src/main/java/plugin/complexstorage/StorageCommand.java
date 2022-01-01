@@ -5,6 +5,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
+import plugin.complexstorage.items.ItemManager;
 
 public class StorageCommand implements CommandExecutor {
     @Override
@@ -18,7 +19,7 @@ public class StorageCommand implements CommandExecutor {
             sender.sendMessage("You need to be a Player!");
             return false;
         }
-        ((Player) sender).getInventory().addItem(new StorageWrench());
+        ((Player) sender).getInventory().addItem(ItemManager.wrench);
         return true;
     }
 }
