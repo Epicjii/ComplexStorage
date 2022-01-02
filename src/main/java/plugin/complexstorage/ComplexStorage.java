@@ -1,6 +1,7 @@
 package plugin.complexstorage;
 
 import org.bukkit.plugin.java.JavaPlugin;
+import plugin.complexstorage.commands.StorageCommand;
 import plugin.complexstorage.items.StorageWrench;
 
 public final class ComplexStorage extends JavaPlugin {

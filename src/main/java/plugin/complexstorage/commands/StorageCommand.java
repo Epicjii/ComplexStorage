@@ -1,4 +1,4 @@
-package plugin.complexstorage;
+package plugin.complexstorage.commands;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
