@@ -1,14 +1,14 @@
 package plugin.complexstorage;
 
 import org.bukkit.plugin.java.JavaPlugin;
-import plugin.complexstorage.items.ItemManager;
+import plugin.complexstorage.items.StorageWrench;
 
 public final class ComplexStorage extends JavaPlugin {
 
     @Override
     public void onEnable() {
         // Plugin startup logic
-        ItemManager.init();
+        StorageWrench.init();
         getCommand("storage").setExecutor(new StorageCommand());
     }
 
