@@ -35,6 +35,10 @@ public class StorageWrench extends ItemStack implements Listener {
         wrench = item;
     }
 
+    public StorageController storageController;
+
+    public boolean hasController = false;
+
     @EventHandler
     public void setSystemController(PlayerInteractEvent event) {
         if (event.getPlayer().getInventory().getItemInMainHand().equals(wrench)) {
@@ -44,23 +48,28 @@ public class StorageWrench extends ItemStack implements Listener {
                     return;
                 }
                 if (clickedBlock.getType().equals(Material.CRAFTING_TABLE)) {
-                    new StorageController(clickedBlock);
+                    storageController = new StorageController(clickedBlock);
+                    hasController = true;
                 }
             }
         }
     }
 
     @EventHandler
-    public static void setInventory(PlayerInteractEvent event) {
+    public void addInventory(PlayerInteractEvent event) {
         if (event.getPlayer().getInventory().getItemInMainHand().equals(wrench)) {
             if (event.getPlayer().isSneaking()) {
-                Block clickedBlock = event.getClickedBlock();
-                if (clickedBlock == null) { return;}
-                if (clickedBlock.getType().equals(Material.CHEST)) {
-                    return;
+                if (hasController) {
+                    Block clickedBlock = event.getClickedBlock();
+                    if (clickedBlock == null) {
+                        return;
+                    }
+                    if (clickedBlock.getType().equals(Material.CHEST)) {
+                        storageController.addLinkedStorage(clickedBlock);
+                    }
+                    event.getPlayer().sendMessage(Component.text("You must set a controller first!"));
                 }
             }
         }
     }
-
 }
