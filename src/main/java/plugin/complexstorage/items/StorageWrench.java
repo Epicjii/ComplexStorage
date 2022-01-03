@@ -17,6 +17,8 @@ import java.util.List;
 
 public class StorageWrench extends ItemStack implements Listener {
     public static ItemStack wrench;
+    public StorageController storageController;
+    public boolean hasController = false;
 
     public static void init() {
         createWrench();
@@ -34,10 +36,6 @@ public class StorageWrench extends ItemStack implements Listener {
         item.setItemMeta(meta);
         wrench = item;
     }
-
-    public StorageController storageController;
-
-    public boolean hasController = false;
 
     @EventHandler
     public void setSystemController(PlayerInteractEvent event) {
