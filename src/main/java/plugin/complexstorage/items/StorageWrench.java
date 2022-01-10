@@ -3,10 +3,12 @@ package plugin.complexstorage.items;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.block.Container;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.CraftingInventory;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -62,8 +64,11 @@ public class StorageWrench extends ItemStack implements Listener {
                     if (clickedBlock == null) {
                         return;
                     }
-                    if (clickedBlock.getType().equals(Material.CHEST)) {
+                    if (clickedBlock instanceof Container) {
                         storageController.addLinkedStorage(clickedBlock);
+                    }
+                    if (clickedBlock instanceof CraftingInventory) {
+                        storageController.addLinkedCrafter(clickedBlock);
                     }
                     event.getPlayer().sendMessage(Component.text("You must set a controller first!"));
                 }
